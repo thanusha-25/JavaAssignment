@@ -57,4 +57,5 @@ public class ContainsAllAlphabets
     }
 }
 
-
+// time complexity is O(n)
+//space complexity is 26
