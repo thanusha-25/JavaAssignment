@@ -1,4 +1,4 @@
-package ass;
+package assign;
 
 public class Jass8 {
 	
