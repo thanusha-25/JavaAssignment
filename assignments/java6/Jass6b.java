@@ -1,17 +1,20 @@
-class Jass6b
+import java.util.*;
+import java.util.logging.*;
+class OverloadedConstructorDemo
 {
-   Jass6b()
+   final static  Logger logger = Logger.getLogger(OverloadedConstructorDemo.class.getName());
+  OverloadedConstructorDemo()
   {
     this(6,7);
-    System.out.println("This is no-arg constructor");
+    logger.log(Level.INFO,"This is no-arg constructor");
    }
-  Jass6b(int a,int b)
+  OverloadedConstructorDemo(int number1,int number2)
   {
-    System.out.println("This is parameterized constructor and parameters passed are "+a+" "+b);
+    logger.log(Level.INFO,"This is parameterized constructor and parameters passed are "+number1+" "+number2);
    }
   public static void main(String[] args)
   { 
-    Jass6b jb=new Jass6b(); 
+    OverloadedConstructorDemo instance=new OverloadedConstructorDemo(); 
     }
 }
 
