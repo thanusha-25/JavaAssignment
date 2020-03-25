@@ -1,31 +1,32 @@
-package assign;
-
-public class Jass8 {
-	
+package assignments;
+import java.util.logging.*;
+public class MultipleExceptions {
+	  final  Logger logger = Logger.getLogger(MultipleExceptions.class.getName());
 	public void methodExceptions()
 	{
 		try
 		{
-			int a[]= {3,4};
-			String s=null;
-			System.out.println(s.charAt(3));
-			System.out.println(a[4]);
+			int array[]= {3,4};
+			String string=null;
+			logger.log(Level.INFO,string.charAt(3)+" ");
+			logger.log(Level.INFO,array[4]+" ");
 			int d=5/0;
 		}
 		catch(ArithmeticException | NullPointerException |ArrayIndexOutOfBoundsException ae)
 		{
-			System.out.println(ae.getClass());
+			logger.log(Level.INFO,ae.getClass()+" ");
 		}
 		finally
 		{
-			System.out.println("finally executed");
+			logger.log(Level.INFO,"finally executed");
 		}
 	}
 	
 public static void main(String[] args)
 {
-	Jass8 obj=new Jass8();
-	obj.methodExceptions();
+	MultipleExceptions object=new MultipleExceptions();
+	object.methodExceptions();
 }
 	
 }
+
