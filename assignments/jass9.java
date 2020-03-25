@@ -1,20 +1,20 @@
 import java.util.regex.*;
 import java.io.*;
 import java.util.*;
-
-class jass9
+import java.util.logging.*;
+class StartsWithCapitalAndEndsWithPeriod
 {
  public static void main(String...args)
  {
-  System.out.println("Enter sentence to test:");
-   Scanner sc=new Scanner(System.in);
-   String input=sc.nextLine();
-   Pattern p=Pattern.compile("^[A-Z][a-zA-Z\\0-9!@#$%^&*()_.,\\]*.$");
-   Matcher m=p.matcher(input);
-   if(m.find())
-    System.out.println("matched");
+   final  Logger logger = Logger.getLogger(StartsWithCapitalAndEndsWithPeriod.class.getName());
+  logger.log(Level.INFO,"Enter sentence to test:");
+   Scanner scanner=new Scanner(System.in);
+   String input=scanner.nextLine();
+   Pattern pattern=Pattern.compile("^[A-Z][a-zA-Z\\0-9!@#$%^&*()_.,\\]*.$");
+   Matcher matcher=pattern.matcher(input);
+   if(matcher.find())
+   logger.log(Level.INFO,"matched");
    else
-     System.out.println("not matched"); 
+   logger.log(Level.INFO,"not matched"); 
  }
  }
-//\\h0-9\\p{!@#$%^&*()_.,\\}
