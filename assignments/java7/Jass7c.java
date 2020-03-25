@@ -28,7 +28,7 @@ class newClass
     }
  }
 
-class Jass7c extends newClass implements Fourth 
+class MainClass extends newClass implements Fourth 
 {
    public void method1()
       {      
@@ -81,7 +81,7 @@ class Jass7c extends newClass implements Fourth
 
    public static void main(String[] args)
    {   
-    Jass7c object=new Jass7c();
+    MainClass object=new MainClass();
       implementingMethod1(object);
       implementingMethod2(object);
       implementingMethod3(object);
