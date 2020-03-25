@@ -1,91 +1,92 @@
+import java.util.logging.*;
 interface First
 {
-  void m1();
-  void m2();
+  void method1();
+  void method2();
  }
 interface Second
 {
-  void m3();
-  void m4();
+  void method3();
+  void method4();
  }
 interface Third
 {
-  void m5();
-  void m6();
+  void method5();
+  void method6();
  }
 interface Fourth extends First,Second,Third
 {
- void m7();
+ void method7();
 }
 
 class newClass
 {
+  final  Logger logger = Logger.getLogger(newClass.class.getName());
   void show()
   {
-    System.out.println("concrete class method ");
+    logger.log(Level.INFO,"concrete class method ");
     }
  }
 
 class Jass7c extends newClass implements Fourth 
 {
-   public void m1()
-      {
-        System.out.println("First method of First class");
+   public void method1()
+      {      
+        logger.log(Level.INFO,"First method of First class");
          }
-    public void m2()
+    public void method2()
       {
-        System.out.println("Second method of First Class");
+      logger.log(Level.INFO,"Second method of First Class");
          }
-   public void m3()
+   public void method3()
       {
-        System.out.println("First method of First class");
+        logger.log(Level.INFO,"First method of First class");
          }
-   public void m4()
+   public void method4()
       {
-        System.out.println("Second method of Second Class");
+        logger.log(Level.INFO,"Second method of Second Class");
          }
-   public void m5()
+   public void method5()
       {
-        System.out.println("First method of First class");
+        logger.log(Level.INFO,"First method of First class");
          }
-   public void m6()
+   public void method6()
       {
-        System.out.println("Second method of Third Class");
+        logger.log(Level.INFO,"Second method of Third Class");
          }
-   public void m7()
+   public void method7()
       {
-        System.out.println("Method of Fourth Class ");
+        logger.log(Level.INFO,"Method of Fourth Class ");
          }
-  static void s1(First f)
+  static void implementingMethod1(First first)
   {
-    f.m1();
-    f.m2();
+    first.method1();
+    first.method2();
     }
-   static void s2(Second s)
+   static void implementingMethod2(Second second)
   {
-    s.m3();
-    s.m4();
+    second.method3();
+    second.method4();
    }
-  static void s3(Third t)
+  static void implementingMethod3(Third third)
    { 
-     t.m5();
-     t.m6();
+     third.method5();
+     third.method6();
      }   
- static void s4(Fourth fr)
+ static void implementingMethod4(Fourth fourth)
     {
-      fr.m7();
+      fourth.method7();
       }
    
 
    public static void main(String[] args)
-   {
-     
-    Jass7c jc=new Jass7c();
-      s1(jc);
-      s2(jc);
-      s3(jc);
-      s4(jc);
-      jc.show();
+   {   
+    Jass7c object=new Jass7c();
+      implementingMethod1(object);
+      implementingMethod2(object);
+      implementingMethod3(object);
+      implementingMethod4(object);
+      object.show();
      }
  }
 
