@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.logging.*;
 interface Cycle
 {
  void work();
@@ -6,57 +7,53 @@ interface Cycle
 
 class Unicycle implements Cycle
 {
+final  Logger logger = Logger.getLogger(Unicycle.class.getName());
   public void work()
   {
-   System.out.println("Unicycle work method");
+   logger.log(Level.INFO,"Unicycle work method");
    }
  }
 
 class Bicycle implements Cycle
 {
+final  Logger logger = Logger.getLogger(Bicycle.class.getName());
   public void work()
   {
-    System.out.println("Bicycle work method");
+    logger.log(Level.INFO,"Bicycle work method");
    }
  
  }
 
 class Tricycle implements Cycle
 {
+final  Logger logger = Logger.getLogger(Tricycle.class.getName());
   public void work()
   {
-    System.out.println("Tricycle work method");
+    logger.log(Level.INFO,"Tricycle work method");
     }
  }
 
 class GetCycleClass
 {   
-  public static Cycle getCycle(String s)
+  public static Cycle getCycle(String string)
   { 
-    if(s=="unicycle")
+    if(string=="unicycle")
     return new Unicycle();
-    else if(s=="bicycle")
+    else if(string=="bicycle")
     return new Bicycle();
-    else if(s=="tricycle")
+    else if(string=="tricycle")
     return new Tricycle();
     return null; 
   }
 }
-class Jass7d
+class CycleImplementations
 {
   public static void main(String[] args)
   {
-    Scanner sc=new Scanner(System.in);
-    GetCycleClass gcc=new GetCycleClass();
-    Cycle c;
-    c=gcc.getCycle(sc.nextLine());   
-    c.work();
+    Scanner scanner=new Scanner(System.in);
+    GetCycleClass getCycleClass=new GetCycleClass();
+    Cycle cycle;
+    cycle=getCycleClass.getCycle(scanner.nextLine());   
+    cycle.work();
   }
 }
-
-
-
-
-
-
-
