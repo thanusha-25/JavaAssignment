@@ -1,70 +1,74 @@
+import java.util.logging.*;
+import java.util.*;
 abstract class Rodent
 {
   abstract void eat();
-  abstract void sleep();
-  
-    
+  abstract void sleep();   
   }
+
 class Rat extends Rodent
 {
+  final  Logger logger = Logger.getLogger(Rat.class.getName());
   Rat()
   {
-    System.out.println("Rat class constructor");
+    logger.log(Level.INFO,"Rat class constructor");
    }
   void eat()
   {
-    System.out.println("Rat eat method");
+    logger.log(Level.INFO,"Rat eat method");
     }
   void sleep()
   {
-    System.out.println("Rat sleep method");
+    logger.log(Level.INFO,"Rat sleep method");
   }
  }
 class Gebril extends Rodent
 {
+final  Logger logger = Logger.getLogger(Gebril.class.getName());
   Gebril()
   {
-    System.out.println("Gebril class constructor");
+    logger.log(Level.INFO,"Gebril class constructor");
    }
   void eat()
   {
-    System.out.println("Gebril eat method");
+    logger.log(Level.INFO,"Gebril eat method");
     }
   void sleep()
   {
-    System.out.println("Gebril sleep method");
+   logger.log(Level.INFO,"Gebril sleep method");
   }
  }
 class Hamster extends Rodent
 {
+final  Logger logger = Logger.getLogger(Hamster.class.getName());
   Hamster()
   {
-    System.out.println("Hamster class constructor");
+    logger.log(Level.INFO,"Hamster class constructor");
    }
   void eat()
   {
-    System.out.println("Hamster eat method");
+   logger.log(Level.INFO,"Hamster eat method");
     }
   void sleep()
   {
-    System.out.println("Hamster sleep method");
+    logger.log(Level.INFO,"Hamster sleep method");
   }
  }
 
-class Jass7a
+class RodentDescription
 {
    public static void main(String[] args)
   {
-    Rodent r[]=new Rodent[3];
-    r[0]=new Rat();
-    r[1]=new Gebril();
-    r[2]=new Hamster();
-    r[0].eat();
-    r[0].sleep();
-    r[1].eat();
-    r[1].sleep();
-    r[2].eat();
-    r[2].sleep();
+    Rodent instance[]=new Rodent[3];
+    instance[0]=new Rat();
+    instance[1]=new Gebril();
+    instance[2]=new Hamster();
+    instance[0].eat();
+    instance[0].sleep();
+    instance[1].eat();
+    instance[1].sleep();
+    instance[2].eat();
+    instance[2].sleep();
    } 
   }
 
