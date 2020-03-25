@@ -1,5 +1,7 @@
-package assign;
+package assignments;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 interface SListIterator<T> {
   boolean hasNext();
@@ -15,17 +17,17 @@ class SList<T> {
   
   
   public String toString() {
-    StringBuilder buf = new StringBuilder();
-    buf.append("[");
-    for(SListIterator<T> it = iterator(); it.hasNext();) {
-      T element = it.next();
-      buf.append(element == this ? "(this SList)" :
+    StringBuilder buffer = new StringBuilder();
+    buffer.append("[");
+    for(SListIterator<T> iterator = iterator(); iterator.hasNext();) {
+      T element = iterator.next();
+      buffer.append(element == this ? "(this SList)" :
         String.valueOf(element));
-      if(it.hasNext())
-        buf.append(", ");
+      if(iterator.hasNext())
+        buffer.append(", ");
     }
-    buf.append("]");
-    return buf.toString();
+    buffer.append("]");
+    return buffer.toString();
   }
   
   
@@ -64,9 +66,9 @@ class SList<T> {
       if(lastReturned == header)
         throw new IllegalStateException();
       // Find an element before the last returned one
-      for(Link<T> curr = header; ; curr = curr.next)
-        if(curr.next == lastReturned) {
-          curr.next = lastReturned.next;
+      for(Link<T> current = header; ; current = current.next)
+        if(current.next == lastReturned) {
+          current.next = lastReturned.next;
           break;
         }
       lastReturned = header;
@@ -80,9 +82,9 @@ class SList<T> {
         header.next = newLink;
       else {
         // Find an element before the one pointed by 'next'
-        for(Link<T> curr = header; ; curr = curr.next)
-          if(curr.next == next) {
-            curr.next = newLink;
+        for(Link<T> current = header; ; current = current.next)
+          if(current.next == next) {
+            current.next = newLink;
             break;
           }
       }
@@ -92,26 +94,27 @@ class SList<T> {
   }
 }
 
-public class Jass10 {
+public class ListIterator {
   public static void main(String[] args) {
-    System.out.println("Demonstrating SListIterator...");
-    SList<String> sl = new SList<String>();
-    System.out.println(sl);
-    SListIterator<String> slit = sl.iterator();
-    slit.add("One");
-    slit.add("Two");
-    slit.add("Three");
-    System.out.println(slit.hasNext());
-    System.out.println(sl);
-    slit = sl.iterator();
-    slit.add("Four");
-    for(; slit.hasNext();)
-    	   System.out.println(slit.next());
-    System.out.println(sl);
-    slit = sl.iterator();
-    System.out.println(slit.next());
-    slit.remove();
-    System.out.println(slit.next());
-    System.out.println(sl);
+	  final  Logger logger = Logger.getLogger(ListIterator.class.getName());
+    logger.log(Level.INFO,"Demonstrating SListIterator...");
+    SList<String> sList = new SList<String>();
+    logger.log(Level.INFO,String.valueOf(sList));
+    SListIterator<String> sListIterator =sList.iterator();
+    sListIterator.add("One");
+    sListIterator.add("Two");
+    sListIterator.add("Three");
+    logger.log(Level.INFO,String.valueOf(sListIterator.hasNext()));
+    logger.log(Level.INFO,String.valueOf(sList));
+    sListIterator = sList.iterator();
+    sListIterator.add("Four");
+    for(; sListIterator.hasNext();)
+    	 logger.log(Level.INFO,String.valueOf(sListIterator.next()));
+    logger.log(Level.INFO,String.valueOf(sList));
+    sListIterator = sList.iterator();
+    logger.log(Level.INFO,String.valueOf(sListIterator.next()));
+    sListIterator.remove();
+    logger.log(Level.INFO,String.valueOf(sListIterator.next()));
+    logger.log(Level.INFO,String.valueOf(sList));
   }
 } 
